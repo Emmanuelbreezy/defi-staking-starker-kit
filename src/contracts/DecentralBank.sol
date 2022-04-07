@@ -14,4 +14,4 @@ contract DecentralBank {
         rwd = _rwd;
         tether = _tether;
     }
-}
+} 
