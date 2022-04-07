@@ -5,14 +5,13 @@ const DecentralBank = artifacts.require('DecentralBank');
 
 module.exports = async function(deployer, network, accounts) {
     await deployer.deploy(Tether)
-    const tether = Tether.deployed()
+    const tether = await Tether.deployed()
 
     await deployer.deploy(RWD)
     const rwd = await RWD.deployed()
 
     await deployer.deploy(DecentralBank, rwd.address, tether.address)
     const decentralBank = await DecentralBank.deployed()
-    print(decentralBank.address,'ddd')
 
     await rwd.transfer(decentralBank.address,'1000000000000000000000000')
     //Distribute  100 Tether tokens to investor
